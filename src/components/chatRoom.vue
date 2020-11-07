@@ -8,7 +8,7 @@
                     <li class="menu-item"><a href="#" class="board"><h2>게시판</h2></a></li>
                     <li class="menu-item"><a href="#" class="chat on"><h2>채팅</h2></a></li>
                     <li class="menu-item"><a href="#" class="set"><h2>설정</h2></a></li>
-                    <li class="menu-item menu-back"><a href="#" class="back"><h2>뒤로가기</h2></a></li>
+                    <li class="menu-item menu-back"><router-link to="/" class="back"><h2>뒤로가기</h2></router-link></li>
                 </ul>
             </nav>
             <section class="info-wrap">
@@ -74,13 +74,13 @@
             <section class="content-wrap">
                 <h3 class="skip">채팅</h3>
                 <div class="chat-wrap">
-                    <div v-for="msgItem in msgList" class="chat-box">
+                    <!-- <div v-for="msgItem in msgList" class="chat-box">
                         <span class="user-profile"></span>
                         <span class="user-name">{{msgItem.user}}</span>
                         <div class="chat-list">
                             <p class="chat-item" :class="msgItem.type">{{msgItem.text}}</p>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- <p class="chat-system-msg">Bee님이 방에 접속하셨습니다</p> -->
                     <!-- <div class="chat-box">
                         <span class="user-profile"></span>
