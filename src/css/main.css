@@ -206,16 +206,16 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
           height: 100%;
           font-size: 0; }
           .wrapper .nav-wrap .menu-list .menu-item a.home {
-            background: url(img/menu-icon-home.png) no-repeat center; }
+            background: url(../img/menu-icon-home.png) no-repeat center; }
           .wrapper .nav-wrap .menu-list .menu-item a.board {
-            background: url(img/menu-icon-board.png) no-repeat center; }
+            background: url(../img/menu-icon-board.png) no-repeat center; }
           .wrapper .nav-wrap .menu-list .menu-item a.chat {
-            background: url(img/menu-icon-chat.png) no-repeat center; }
+            background: url(../img/menu-icon-chat.png) no-repeat center; }
           .wrapper .nav-wrap .menu-list .menu-item a.set {
-            background: url(img/menu-icon-set.png) no-repeat center; }
+            background: url(../img/menu-icon-set.png) no-repeat center; }
           .wrapper .nav-wrap .menu-list .menu-item a.back {
             padding-top: 18px;
-            background: #8C3FAC url(img/menu-icon-back.png) no-repeat center; }
+            background: #8C3FAC url(../img/menu-icon-back.png) no-repeat center; }
           .wrapper .nav-wrap .menu-list .menu-item a.on {
             background-color: #8C3FAC; }
   .wrapper .info-wrap {
@@ -259,7 +259,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
           display: none; }
         .wrapper .info-wrap .info-tab.user-tit.user-owner .user-name {
           padding-right: 20px;
-          background: #6C2E8B url(img/user-owner.png) no-repeat right 20px; }
+          background: #6C2E8B url(../img/user-owner.png) no-repeat right 20px; }
         .wrapper .info-wrap .info-tab.user-tit .user-profile {
           display: inline-block;
           margin-right: 10px;
@@ -306,7 +306,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
           left: 10px;
           width: 15px;
           height: 10px;
-          background: url(img/user-owner.png) no-repeat center/contain; }
+          background: url(../img/user-owner.png) no-repeat center/contain; }
         .wrapper .info-wrap .user-list .user-item > a {
           display: flex;
           align-items: center; }
@@ -344,7 +344,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
       .wrapper .content-wrap .room-wrap h3 {
         margin-bottom: 40px;
         padding: 120px 100px 80px;
-        background: url(img/room-wrap-bg.png) no-repeat center/contain;
+        background: url(../img/room-wrap-bg.png) no-repeat center/contain;
         font-size: 7.5rem;
         font-weight: 800;
         text-align: center; }
@@ -397,7 +397,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
               left: -6px;
               width: 15px;
               height: 10px;
-              background: url(img/user-owner.png) no-repeat center/contain; }
+              background: url(../img/user-owner.png) no-repeat center/contain; }
     .wrapper .content-wrap .chat-wrap {
       height: 620px;
       overflow-y: scroll;
