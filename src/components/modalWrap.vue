@@ -18,7 +18,7 @@ export default {
     },
     data() {
         return {
-            showModal: this.$store.state.showModal
+            
         }
     },
     methods: {

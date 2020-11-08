@@ -5,63 +5,53 @@
                 <input 
                     type="text" 
                     placeholder="방 이름을 입력해주세요" 
+                    maxlength="30"
                     v-model="roomName"
                     title="방 이름 입력" 
                     class="modal-room-name-input"
                 >
                 <div class="modal-room-member-wrap">
                     <input 
-                        type="number" 
-                        @keyup="checkNum"
+                        type="number"
                         v-model="roomUserCount"
-                        min="2" 
-                        max="99" 
+                        @keyup="checkNum"
+                        min="1"
+                        max="99"
                         title="방 인원 입력" 
                         class="modal-room-user-input"
                     >
                     <div class="modal-bnt-wrap">
                         <button 
-                            @click.prevent="roomUserCount--"
+                            @click="roomUserCount--"
                             class="btn-basic btn-count"
                         >-</button>
                         <button  
-                            @click.prevent="roomUserCount++"
+                            @click="roomUserCount++"
                             class="btn-basic btn-count"
                         >+</button>
                     </div>
                 </div>
-                <div class="modal-bnt-wrap">
-                    <button 
-                        @click.prevent="createRoom"
-                        class="btn-basic bg-purple"
-                    >CREATE</button>
-                    <button 
-                        @click.prevent="resetNewRoomModal"
-                        class="btn-basic bg-grey"
-                    >CANCEL</button>
-                </div>
+                <modalBtnWrap/>
             </div>
         </div>
 </template>
 
 <script>
+import modalBtnWrap from '@/components/modalBtnWrap'
+
 export default {
     name: 'modalNewRoom',
     components: {
-
+        modalBtnWrap
     },
     data() {
       return {
         roomName : null,
         roomUserCount: 1,
-        roomItems: this.$store.state.roomDTO,
-        showModal: this.$store.state.showModal
+        roomItems: this.$store.state.roomDTO
       }
     },
     methods: {
-        checkNum() {
-
-        },
         modalOff() {
             this.$store.state.showModal = false
         },
@@ -82,6 +72,18 @@ export default {
 
             this.modalOff()
         }
+    },
+    computed: {
+        checkNum() {
+            let counter = this.roomUserCount
+
+            if(counter < 1) counter = 1
+            if(counter > 99) counter = 99
+
+            this.roomUserCount = counter
+
+            return counter
+        },
     }
 }
 </script>
