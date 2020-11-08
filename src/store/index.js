@@ -18,6 +18,12 @@ export default new Vuex.Store({
         name: 'group01'
       }
     ],
+    groupUserDTO: [
+      {name: '유저1'},
+      {name: 'asdfghjkl'},
+      {name: '바닷가'},
+
+    ],
     roomDTO: [
       {num : 1,
           tit : '제목입니다',

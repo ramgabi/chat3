@@ -1,26 +1,41 @@
 <template>
     <div>
         <h4 class="group-tit" :class="{off : !active}">
-            <a href="#" @click.prevent="!active">User</a>
+            <a href="#" @click.prevent="toggleGroup">User</a>
         </h4>
         <ul class="user-list" v-show="active">
-            <userItem v-for="(useritem, i) in userList" :key="i"/>
+            <li 
+             v-for="(userItem, i) in userList" 
+             :key="i"
+             class="user-item user-owner"
+             :class="userItem"
+            >
+                <a href="#">
+                    <span class="user-profile"></span>
+                    <span class="user-name">{{ userItem.name }}</span>
+                </a>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
-import userItem from '@/components/userItem.vue'
+// import userItem from '@/components/userItem.vue'
 
 export default {
     name: 'groupItem',
     components: {
-        userItem
+        // userItem
     },
     data() {
          return {
              active: false,
-             userList : this.$parent.groupDTO
+             userList : this.$store.state.groupUserDTO
+         }
+     },
+     methods: {
+         toggleGroup() {
+             this.active = !this.active
          }
      }
 }
