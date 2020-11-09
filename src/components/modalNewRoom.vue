@@ -5,7 +5,7 @@
                 <input 
                     type="text" 
                     placeholder="방 이름을 입력해주세요" 
-                    maxlength="30"
+                    maxlength="35"
                     v-model="roomName"
                     title="방 이름 입력" 
                     ref="roomName"
@@ -106,8 +106,8 @@ export default {
     }
 
     @keyframes shake {
-        0% {transform: rotate(1deg)}
-        50% {transform: rotate(-1deg)}
-        100% {transform: rotate(0deg)}
+        0% {transform: translateX(2px)}
+        50% {transform: translateX(-2px)}
+        100% {transform: translateX(0)}
     }
 </style>

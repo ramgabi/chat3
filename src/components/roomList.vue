@@ -1,5 +1,5 @@
 <template>
-  <ul class="room-list">
+  <ul class="room-list" ref="roomList">
         <li v-for="(roomitem, i) in roomItems" :key="i" class="room-item">
             <router-link to="/room">
                 <span class="room-num">{{roomitem.num | formatRoomNum}}</span>
@@ -18,12 +18,28 @@ export default {
     name: 'roomList',
     data() {
         return {
-            roomItems: this.$store.state.roomDTO
+            roomItems: this.$store.state.roomDTO,
+            sidForScroll: null
+        }
+    },
+    methods: {
+        roomListScroll() {
+            if(this.$refs.roomList.scrollTop <= this.$refs.roomList.scrollHeight - 235) {
+                this.$refs.roomList.scrollTop += 10
+            }else {
+                clearInterval(this.sidForScroll)
+            }
         }
     },
     filters: {
         formatRoomNum(num) {
             return String(num).padStart(3, 0)
+        }
+    },
+    watch: {
+        roomItems: function() {
+            this.$refs.roomList.scrollTop = this.$refs.roomList.scrollHeight
+            this.sidForScroll = setInterval(this.roomListScroll, 50)
         }
     }
 }
