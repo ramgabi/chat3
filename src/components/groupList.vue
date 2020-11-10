@@ -1,6 +1,10 @@
 <template>
     <div class="group-list">
-        <groupItem v-for="(n, i) in 1" :key="i"/>
+        <group-item
+            v-for="(groupItem, i) in groupDTO.groupList"
+            :group-item="groupItem"
+            :key="i"
+        />
     </div>
 </template>
 

@@ -272,66 +272,73 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
       .wrapper .info-wrap .info-tab .info-user-num {
         opacity: .8;
         font-size: 1.2rem; }
-    .wrapper .info-wrap .group-tit {
-      position: relative;
-      display: inline-block;
-      margin-left: 15px;
-      font-size: 2.2rem;
-      line-height: 2.5;
-      color: #6C2E8B; }
-      .wrapper .info-wrap .group-tit::before, .wrapper .info-wrap .group-tit::after {
-        position: absolute;
-        top: calc(50% - 1px);
-        right: -25px;
-        content: '';
-        width: 10px;
-        height: 1px;
-        background-color: #6C2E8B; }
-      .wrapper .info-wrap .group-tit::after {
-        opacity: 0; }
-      .wrapper .info-wrap .group-tit.off::after {
-        transform: rotate(90deg);
-        opacity: 1; }
-    .wrapper .info-wrap .user-list {
-      margin-left: 20px; }
-      .wrapper .info-wrap .user-list .user-item {
+    .wrapper .info-wrap .group-list {
+      overflow-y: scroll;
+      height: 570px;
+      -ms-overflow-style: none;
+      scrollbar-width: none; }
+      .wrapper .info-wrap .group-list::-webkit-scrollbar {
+        display: none; }
+      .wrapper .info-wrap .group-list .group-tit {
         position: relative;
-        display: flex;
-        align-items: center;
-        margin-bottom: 10px; }
-        .wrapper .info-wrap .user-list .user-item.user-owner::after {
+        display: inline-block;
+        margin-left: 15px;
+        font-size: 2.2rem;
+        line-height: 2.5;
+        color: #6C2E8B; }
+        .wrapper .info-wrap .group-list .group-tit::before, .wrapper .info-wrap .group-list .group-tit::after {
+          position: absolute;
+          top: calc(50% - 1px);
+          right: -25px;
           content: '';
-          position: absolute;
-          top: -7px;
-          left: 10px;
-          width: 15px;
-          height: 10px;
-          background: url(../img/user-owner.png) no-repeat center/contain; }
-        .wrapper .info-wrap .user-list .user-item > a {
+          width: 10px;
+          height: 1px;
+          background-color: #6C2E8B; }
+        .wrapper .info-wrap .group-list .group-tit::after {
+          opacity: 0; }
+        .wrapper .info-wrap .group-list .group-tit.off::after {
+          transform: rotate(90deg);
+          opacity: 1; }
+      .wrapper .info-wrap .group-list .user-list {
+        margin-left: 20px; }
+        .wrapper .info-wrap .group-list .user-list .user-item {
+          position: relative;
           display: flex;
-          align-items: center; }
-          .wrapper .info-wrap .user-list .user-item > a .user-profile {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            border-radius: 50%;
-            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMEM6-Bgl23YiSg4Phm80-NCHq_3mYoGpNxA&usqp=CAU) no-repeat center/cover; }
-          .wrapper .info-wrap .user-list .user-item > a .user-name {
-            font-size: 1.5rem;
-            color: #666; }
-        .wrapper .info-wrap .user-list .user-item .context-menu-list {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          padding: 10px 13px;
-          border-radius: 10px;
-          background-color: #6C2E8B;
-          line-height: 2;
-          color: rgba(255, 255, 255, 0.8);
-          z-index: 3; }
-          .wrapper .info-wrap .user-list .user-item .context-menu-list .context-menu-item a {
-            color: #fff; }
+          align-items: center;
+          margin-bottom: 10px; }
+          .wrapper .info-wrap .group-list .user-list .user-item.user-owner::after {
+            content: '';
+            position: absolute;
+            top: -7px;
+            left: 10px;
+            width: 15px;
+            height: 10px;
+            background: url(../img/user-owner.png) no-repeat center/contain; }
+          .wrapper .info-wrap .group-list .user-list .user-item > a {
+            display: flex;
+            align-items: center; }
+            .wrapper .info-wrap .group-list .user-list .user-item > a .user-profile {
+              display: inline-block;
+              width: 30px;
+              height: 30px;
+              margin-right: 10px;
+              border-radius: 50%;
+              background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMEM6-Bgl23YiSg4Phm80-NCHq_3mYoGpNxA&usqp=CAU) no-repeat center/cover; }
+            .wrapper .info-wrap .group-list .user-list .user-item > a .user-name {
+              font-size: 1.5rem;
+              color: #666; }
+          .wrapper .info-wrap .group-list .user-list .user-item .context-menu-list {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 10px 13px;
+            border-radius: 10px;
+            background-color: #6C2E8B;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.8);
+            z-index: 3; }
+            .wrapper .info-wrap .group-list .user-list .user-item .context-menu-list .context-menu-item a {
+              color: #fff; }
   .wrapper .content-wrap {
     width: calc(100% - 345px);
     height: 100%;
@@ -422,7 +429,14 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
         position: relative;
         margin: 20px 0;
         padding-top: 2px;
-        padding-left: 35px; }
+        padding-left: 35px;
+        opacity: 0;
+        animation: newChat .7s forwards; }
+
+@keyframes newChat {
+  0% { }
+  100% {
+    opacity: 1; } }
         .wrapper .content-wrap .chat-wrap .chat-box .user-profile {
           display: block;
           position: absolute;

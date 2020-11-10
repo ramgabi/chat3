@@ -2,9 +2,9 @@
     <section class="info-wrap">
         <h3 class="info-tab">
             Online
-            <span class="info-user-num">99</span> <!-- DTO.length로 숫자 input -->
+            <span class="info-user-num">{{ userCounter }}</span> <!-- DTO.length로 숫자 input -->
         </h3>
-        <groupList v-for="(n, i) in 3" :key="i"/> <!-- 임시로 v-for -->
+        <groupList/>
         <userProfile/>
     </section>
 </template>
@@ -21,7 +21,19 @@ export default {
     },
     data() {
         return {
-            // DTO 받아서 하위로도 넘기기
+
+        }
+    },
+    computed: {
+        userCounter() {
+            let groupDTO = this.$store.state.groupDTO
+            let groupLength = groupDTO.groupList.length
+            let usercount = 0
+
+            for(let i = 0; i < groupLength; i++) {
+                usercount += groupDTO.groupList[i].userList.length
+            }
+            return usercount
         }
     }
 }

@@ -1,7 +1,7 @@
 <template>
   <ul class="room-list" ref="roomList">
         <li v-for="(roomitem, i) in roomItems" :key="i" class="room-item">
-            <router-link to="/room">
+            <router-link @click="enterRoom" to="/room">
                 <span class="room-num">{{roomitem.num | formatRoomNum}}</span>
                 <span class="room-tit">{{roomitem.tit}}</span>
                 <span class="room-own">{{roomitem.own}}</span>
@@ -29,6 +29,9 @@ export default {
             }else {
                 clearInterval(this.sidForScroll)
             }
+        },
+        enterRoom() {
+            this.$store.state.isRoom = true;
         }
     },
     filters: {

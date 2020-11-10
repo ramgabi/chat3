@@ -2,16 +2,9 @@
     <div class="wrapper">
         <h1 class="skip">Chat Lobby</h1>
         <div class="app-wrap">
-            <nav class="nav-wrap">
-                <ul class="menu-list">
-                    <li class="menu-item"><a href="#" class="home"><h2>홈</h2></a></li>
-                    <li class="menu-item"><a href="#" class="board"><h2>게시판</h2></a></li>
-                    <li class="menu-item"><a href="#" class="chat on"><h2>채팅</h2></a></li>
-                    <li class="menu-item"><a href="#" class="set"><h2>설정</h2></a></li>
-                    <li class="menu-item menu-back"><router-link to="/" class="back"><h2>뒤로가기</h2></router-link></li>
-                </ul>
-            </nav>
-            <section class="info-wrap">
+            <navWrap/>
+            <infoWrap/>
+            <!-- <section class="info-wrap">
                 <h3 class="info-tab">
                     Member
                     <span class="info-user-num"><span class="info-user-num-now">8</span>/9</span>
@@ -70,17 +63,17 @@
                     <span class="user-profile"></span>
                     <span class="user-name">right here</span>
                 </div>
-            </section>
+            </section> -->
             <section class="content-wrap">
                 <h3 class="skip">채팅</h3>
-                <div class="chat-wrap">
-                    <!-- <div v-for="msgItem in msgList" class="chat-box">
+                <div class="chat-wrap" ref="chatWrap">
+                    <div v-for="(msgItem, i) in msgList" class="chat-box" :key="i">
                         <span class="user-profile"></span>
                         <span class="user-name">{{msgItem.user}}</span>
                         <div class="chat-list">
                             <p class="chat-item" :class="msgItem.type">{{msgItem.text}}</p>
                         </div>
-                    </div> -->
+                    </div>
                     <!-- <p class="chat-system-msg">Bee님이 방에 접속하셨습니다</p> -->
                     <!-- <div class="chat-box">
                         <span class="user-profile"></span>
@@ -139,7 +132,7 @@
                         <textarea 
                             v-model="msg"
                             @keyup.13="submitMsg"
-                            @keyup.9="changeType"
+                            @keyup.9.prevent="changeType"
                             placeholder="Type your message..." 
                             title="메시지입력" 
                             class="chat-input">
@@ -155,3 +148,62 @@
         </div>
     </div>
 </template>
+
+<script>
+import navWrap from '@/components/navWrap.vue'
+import infoWrap from '@/components/infoWrap.vue'
+import contentWrap from '@/components/contentWrap.vue'
+import modalWrap from '@/components/modalWrap.vue'
+
+export default {
+    name: 'chatRoom',    
+    components: {
+        navWrap,
+        infoWrap,
+        contentWrap,
+        modalWrap
+    },
+    data() {
+        return {
+            chatType: 'All',
+            msgList: [],
+            msg: null,
+            sidForScroll: null
+        }
+    },
+    methods: {
+        chatWrapScroll() {
+            if(this.$refs.chatWrap.scrollTop <= this.$refs.chatWrap.scrollHeight - 630) {
+                this.$refs.chatWrap.scrollTop += 10
+            }else {
+                clearInterval(this.sidForScroll)
+            }
+        },
+        submitMsg: function() {
+            const newMsg = {
+                user: this.$store.state.userDTO.name,
+                text: this.msg,
+                type: this.chatType,
+            }
+            this.msgList.push(newMsg)
+            this.msg = null
+        },
+        changeType: function() {
+            let chatType = this.chatType
+            if( this.chatType == 'All') {
+                this.chatType = 'Group'
+            } else if( this.chatType == 'Group') {
+                this.chatType = 'Whisper'
+            } else {
+                this.chatType = 'All'
+            }
+        }
+    },
+    watch: {
+        msgList: function() {
+            this.$refs.chatWrap.scrollTop = this.$refs.chatWrap.scrollHeight
+            this.sidForScroll = setInterval(this.chatWrapScroll, 50)
+        }
+    }
+}
+</script>

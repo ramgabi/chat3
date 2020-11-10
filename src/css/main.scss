@@ -386,92 +386,104 @@ input[type=number] {
             }
         }
 
-        .group-tit {
-            position: relative;
-            display: inline-block;
-            margin-left: 15px;
-            font-size: 2.2rem;
-            line-height: 2.5;
-            color: $purple;
-
-            &::before, &::after {
-                position: absolute;
-                top: calc(50% - 1px);
-                right: -25px;
-                content: '';
-                width: 10px;
-                height:1px;
-                background-color: $purple;
+        .group-list {
+            overflow-y: scroll;
+            height: 570px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+    
+            &::-webkit-scrollbar {
+                display: none;
             }
 
-            &::after {
-                opacity: 0;
-            }
-
-            &.off::after {
-                transform: rotate(90deg);
-                opacity: 1;
-            }
-        }
-
-        .user-list {
-            margin-left: 20px;
-            
-            .user-item {
+            .group-tit {
                 position: relative;
-                display: flex;
-                align-items: center;
-                margin-bottom: 10px;
-
-                &.user-owner {
-
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: -7px;
-                        left: 10px;
-                        width: 15px;
-                        height: 10px;
-                        background: url(../img/user-owner.png) no-repeat center / contain;
-                    }
-                }
-
-                > a {
-                    display: flex;
-                    align-items: center;
-
-                    .user-profile {
-                        display: inline-block;
-                        width: 30px;
-                        height: 30px;
-                        margin-right: 10px;
-                        border-radius: 50%;
-                        background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMEM6-Bgl23YiSg4Phm80-NCHq_3mYoGpNxA&usqp=CAU) no-repeat center / cover;
-                    }
-        
-                    .user-name {
-                        font-size: 1.5rem;
-                        color: #666;
-                    }
+                display: inline-block;
+                margin-left: 15px;
+                font-size: 2.2rem;
+                line-height: 2.5;
+                color: $purple;
+    
+                &::before, &::after {
+                    position: absolute;
+                    top: calc(50% - 1px);
+                    right: -25px;
+                    content: '';
+                    width: 10px;
+                    height:1px;
+                    background-color: $purple;
                 }
     
-                .context-menu-list {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    padding: 10px 13px;
-                    border-radius: 10px;
-                    background-color: $purple;
-                    line-height: 2;
-                    color: rgba(255, 255, 255, 0.8);
-                    z-index: 3;
-
-                    .context-menu-item a {
-                        color: #fff;
-                    }
+                &::after {
+                    opacity: 0;
                 }
-                
+    
+                &.off::after {
+                    transform: rotate(90deg);
+                    opacity: 1;
+                }
             }
+    
+            .user-list {
+                margin-left: 20px;
+                
+                .user-item {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+    
+                    &.user-owner {
+    
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: -7px;
+                            left: 10px;
+                            width: 15px;
+                            height: 10px;
+                            background: url(../img/user-owner.png) no-repeat center / contain;
+                        }
+                    }
+    
+                    > a {
+                        display: flex;
+                        align-items: center;
+    
+                        .user-profile {
+                            display: inline-block;
+                            width: 30px;
+                            height: 30px;
+                            margin-right: 10px;
+                            border-radius: 50%;
+                            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMEM6-Bgl23YiSg4Phm80-NCHq_3mYoGpNxA&usqp=CAU) no-repeat center / cover;
+                        }
+            
+                        .user-name {
+                            font-size: 1.5rem;
+                            color: #666;
+                        }
+                    }
+        
+                    .context-menu-list {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        padding: 10px 13px;
+                        border-radius: 10px;
+                        background-color: $purple;
+                        line-height: 2;
+                        color: rgba(255, 255, 255, 0.8);
+                        z-index: 3;
+    
+                        .context-menu-item a {
+                            color: #fff;
+                        }
+                    }
+                    
+                }
+        }
+
 
         }
     }
@@ -599,6 +611,13 @@ input[type=number] {
                 margin: 20px 0;
                 padding-top: 2px;
                 padding-left: 35px;
+                opacity: 0;
+                animation: newChat .7s forwards;
+
+                @keyframes newChat {
+                    0% {}
+                    100% {opacity: 1}
+                }
 
 	            .user-profile{
                     display: block;

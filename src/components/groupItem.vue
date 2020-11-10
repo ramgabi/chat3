@@ -1,11 +1,11 @@
 <template>
     <div>
         <h4 class="group-tit" :class="{off : !active}">
-            <a href="#" @click.prevent="toggleGroup">User</a>
+            <a href="#" @click.prevent="toggleGroup">{{ groupItem.name }}</a>
         </h4>
         <ul class="user-list" v-show="active">
             <li 
-             v-for="(userItem, i) in userList" 
+             v-for="(userItem, i) in groupItem.userList" 
              :key="i"
              class="user-item user-owner"
              :class="userItem"
@@ -24,6 +24,9 @@
 
 export default {
     name: 'groupItem',
+    props: {
+	  groupItem: Object
+    },
     components: {
         // userItem
     },
